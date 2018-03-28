@@ -19,7 +19,7 @@ public class DynamoDbApiHandler {
     private static final int timeOutMillis = 30000;
 
     private static final Logger LOG = Logger.getLogger("DynamoDbApiHandler");
-    private static final int PORT = 8080;
+    private static final int PORT = 80;
 
     public static void main(String[] args) {
         // Config
