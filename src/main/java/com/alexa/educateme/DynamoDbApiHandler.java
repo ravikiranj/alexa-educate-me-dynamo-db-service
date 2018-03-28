@@ -1,7 +1,7 @@
 package com.alexa.educateme;
 
 import com.alexa.educateme.routes.HelloRoute;
-import com.alexa.educateme.routes.getid;
+import com.alexa.educateme.routes.GetTopicId;
 import com.alexa.educateme.util.JsonResponseTransformer;
 import spark.ResponseTransformer;
 
@@ -29,7 +29,7 @@ public class DynamoDbApiHandler {
 
         // Endpoints
         get("/hello", new HelloRoute(), JSON_RESP_TRANSFORMER);
-        get("/getid", new getid(), JSON_RESP_TRANSFORMER);
+        get("/getTopicId", new GetTopicId(), JSON_RESP_TRANSFORMER);
 
         // Filters
         after(((request, response) -> {
