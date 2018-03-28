@@ -26,8 +26,8 @@ public class DynamoDbTopicResponse {
         return items;
     }
 
-    public String getItem(int index) {
-        return items.get(String.valueOf(index));
+    public String getItem(String index) {
+        return items.get(index);
     }
 
     public static class ItemMetaData {

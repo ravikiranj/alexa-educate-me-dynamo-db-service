@@ -1,5 +1,6 @@
 package com.alexa.educateme;
 
+import com.alexa.educateme.routes.GetTopic;
 import com.alexa.educateme.routes.HelloRoute;
 import com.alexa.educateme.routes.GetTopicId;
 import com.alexa.educateme.util.JsonResponseTransformer;
@@ -30,11 +31,10 @@ public class DynamoDbApiHandler {
         // Endpoints
         get("/hello", new HelloRoute(), JSON_RESP_TRANSFORMER);
         get("/getTopicId", new GetTopicId(), JSON_RESP_TRANSFORMER);
+        get("/getTopic", new GetTopic(), JSON_RESP_TRANSFORMER);
 
         // Filters
-        after(((request, response) -> {
-            response.type("application/json");
-        }));
+        after(((request, response) -> response.type("application/json")));
 
         LOG.info("Started server at port = " + PORT);
     }
