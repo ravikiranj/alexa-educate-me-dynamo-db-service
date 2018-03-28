@@ -6,6 +6,7 @@ import com.alexa.educateme.models.TopicIdResponse;
 import com.alexa.educateme.util.DynamoDbHelper;
 import com.alexa.educateme.util.ObjectMapperHelper;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.sun.deploy.net.URLEncoder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.eclipse.jetty.http.HttpStatus;
@@ -20,9 +21,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.Logger;
 
 public class GetTopicId implements Route {
@@ -64,7 +63,7 @@ public class GetTopicId implements Route {
 
     private TopicIdResponse getResponseFromWikipediaScraper(String topic) {
         try {
-            String url = String.format("http://ec2-54-218-93-249.us-west-2.compute.amazonaws.com/topic/%s/", topic);
+            String url = String.format("http://ec2-54-218-93-249.us-west-2.compute.amazonaws.com/topic/%s/", URLEncoder.encode(topic, "UTF-8"));
             LOG.info("Making an API call to " + url + ", since we didn't find it in dynamo db");
             try (InputStream is = new URL(url).openStream()){
                 BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
